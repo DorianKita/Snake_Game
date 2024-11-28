@@ -1,17 +1,15 @@
 from turtle import Turtle
 
-import snake
-
+STARTING_POSITIONS = [(0,0),(-20,0),(-40,0)]
 
 class Snake:
     def __init__(self):
-        self.starting_positions = [(0,0),(-20,0),(-40,0)]
         self.segments = []
-        self.generated = False
+        self.generate_snake()
 
 
     def generate_snake(self, ):
-        for position in self.starting_positions:
+        for position in STARTING_POSITIONS:
             new_segment = Turtle(shape='square')
             new_segment.penup()
             new_segment.color('white')
@@ -22,8 +20,6 @@ class Snake:
 
 
     def move(self):
-        if not self.generated:
-            self.generate_snake()
         for seg_num in range(len(self.segments) - 1, 0, -1):
             new_x = self.segments[seg_num - 1].xcor()
             new_y = self.segments[seg_num - 1].ycor()
